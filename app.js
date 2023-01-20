@@ -10,8 +10,9 @@ const { campgroundSchema, reviewSchemam } = require("./schemas");
 const User = require("./models/user");
 const ExpressError = require("./utils/ExpressError");
 
-const campgrounds = require("./routes/campgrounds");
-const reviews = require("./routes/reviews");
+const userRoutes = require("./routes/users");
+const campgroundRoutes = require("./routes/campgrounds");
+const reviewRoutes = require("./routes/reviews");
 
 const express = require("express");
 const app = express();
@@ -56,13 +57,18 @@ passport.serializeUser(User.serializeUser());
 passport.deserializeUser(User.deserializeUser());
 
 app.use((req, res, next) => {
+	if (req.session.returnTo) {
+		res.locals.returnTo = req.session.returnTo;
+	}
+	res.locals.currentUser = req.user;
 	res.locals.success = req.flash("success");
 	res.locals.error = req.flash("error");
 	next();
 });
 
-app.use("/campgrounds", campgrounds);
-app.use("/campgrounds/:id/reviews", reviews);
+app.use("/", userRoutes);
+app.use("/campgrounds", campgroundRoutes);
+app.use("/campgrounds/:id/reviews", reviewRoutes);
 
 app.get("/", (req, res) => {
 	res.render("home");
