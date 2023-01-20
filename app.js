@@ -6,7 +6,7 @@ const flash = require("connect-flash");
 const passport = require("passport");
 const LocalStrategy = require("passport-local");
 
-const { campgroundSchema, reviewSchemam } = require("./schemas");
+const { campgroundSchema, reviewSchema } = require("./schemas");
 const User = require("./models/user");
 const ExpressError = require("./utils/ExpressError");
 
