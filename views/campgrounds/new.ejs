@@ -8,6 +8,7 @@
 			method="POST"
 			class="needs-validation"
 			novalidate
+			enctype="multipart/form-data"
 		>
 			<div class="mb-3">
 				<label for="title" class="form-label" required>Title:</label>
@@ -32,15 +33,14 @@
 				<div class="valid-feedback">Looks good!</div>
 			</div>
 			<div class="mb-3">
-				<label for="image" class="form-label">Image URL:</label
-				><input
-					type="text"
+				<label for="image" class="form-label">Add images:</label>
+				<input
 					class="form-control"
-					name="campground[image]"
+					type="file"
 					id="image"
-					required
+					name="image"
+					multiple
 				/>
-				<div class="valid-feedback">Looks good!</div>
 			</div>
 			<div class="mb-3">
 				<label for="price" class="form-label">Campground Price:</label>

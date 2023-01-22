@@ -1,3 +1,7 @@
+if (process.env.NODE_ENV !== "production") {
+	require("dotenv").config();
+}
+
 const ejsMate = require("ejs-mate");
 const methodOverride = require("method-override");
 const path = require("path");
@@ -46,6 +50,7 @@ const sessionConfig = {
 		maxAge: 1000 * 60 * 60 * 24 * 7,
 	},
 };
+
 app.use(session(sessionConfig));
 app.use(flash());
 
