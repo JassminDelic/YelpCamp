@@ -26,8 +26,8 @@ const MongoStore = require("connect-mongo");
 const helmet = require("helmet");
 
 mongoose.set("strictQuery", false); // To stop Mongoose from complaining about it
-// const dbUrl = process.env.DB_URL;
-const dbUrl = "mongodb://127.0.0.1:27017/yelp-camp";
+const dbUrl = process.env.DB_URL;
+// const dbUrl = "mongodb://127.0.0.1:27017/yelp-camp";
 async function main() {
 	await mongoose.connect(dbUrl);
 	console.log("Database connected.");
